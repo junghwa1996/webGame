@@ -29,3 +29,18 @@ function submitPuzzle() {
       alert("Incorrect, try again.");
   }
 }
+
+function toggleNote() {
+  const noteSection = document.getElementById('noteSection');
+  noteSection.style.display = (noteSection.style.display === 'none') ? 'block' : 'none';
+}
+
+function toggleHint() {
+  const hintSection = document.getElementById('hintSection');
+  hintSection.style.display = (hintSection.style.display === 'none') ? 'block' : 'none';
+}
+
+function toggleInventory() {
+  const inventorySection = document.getElementById('inventorySection');
+  inventorySection.style.display = (inventorySection.style.display === 'none') ? 'block' : 'none';
+}

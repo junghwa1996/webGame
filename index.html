@@ -27,9 +27,9 @@
     <!-- Puzzle object -->
     <div class="roomObject" id="puzzleObject" onclick="showPuzzle()">Click here to find the puzzle</div>
     
-    <div id="inventorySection">
-        <h2>Inventory</h2>
-        <div id="inventoryDisplay"></div>
+    <div id="inventorySection" style="display:none;">
+      <h2>Inventory</h2>
+      <div id="inventoryDisplay"></div>
     </div>
 
     <!-- Hidden puzzle display -->
@@ -40,16 +40,23 @@
         <button id="submitPuzzleButton" onclick="submitPuzzle()">Submit Answer</button>
     </div>
 
+    <div id="iconBar">
+      <img src="images/note_icon.png" id="noteIcon" onclick="toggleNote()" alt="Note Icon">
+      <img src="images/hint_icon.png" id="hintIcon" onclick="toggleHint()" alt="Hint Icon">
+      <img src="images/inventory_icon.png" id="inventoryIcon" onclick="toggleInventory()" alt="Inventory Icon">
+    </div>
 
-    <section id="hintSection">
-      <button id="hintButton">Use Hint</button>
-    </section>
 
-    <section id="noteSection">
-        <h2>Notes</h2>
-        <button id="addNoteButton">Add Note</button>
-        <div id="noteDisplay"></div>
-    </section>
+    <div id="hintSection" style="display:none;">
+      <h2>Hints</h2>
+      <button onclick="useHint()">Use Hint</button>
+    </div>
+
+    <div id="noteSection" style="display:none;">
+      <h2>Notes</h2>
+      <button onclick="createNote()">Create Note</button>
+      <div id="noteContainer"></div>
+    </div>
   </div>
 
   <script src="hintSystem.js"></script>
@@ -60,5 +67,6 @@
   <script src="story.js"></script>
   <script src="objectInteract.js"></script>
   <script src="game.js"></script>
+  <script src="note.js"></script>
 </body>
 </html>

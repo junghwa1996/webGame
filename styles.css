@@ -95,3 +95,32 @@ button:hover {
   justify-content: center;
   margin-top: 20px;
 }
+
+#iconBar {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+
+#iconBar img {
+  width: 50px;
+  height: 50px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.note {
+  width: 150px;
+  height: 100px;
+  background-color: yellow;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: move;
+  z-index: 10;
+}
+
+#noteContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
