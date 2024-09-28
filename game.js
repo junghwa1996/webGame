@@ -59,6 +59,43 @@ function startGame() {
   document.getElementById('storyScreen').style.display = 'block';
 };
 
+function restartGame() {
+  // Reset game variables
+  hintCount = 3;
+  obtainedHints = [];
+  inventory = [];
+  notes = [];
+  timeLimit = 60 * 60;  // Reset the timer to 60 minutes
+
+  // Clear any displayed hints, notes, and inventory
+  document.getElementById('inventoryDisplay').innerHTML = '';
+  document.getElementById('noteContainer').innerHTML = '';
+  document.getElementById('previousHintsDropdown').innerHTML = '<option value="">Select a hint</option>';
+  document.getElementById('previousHintDisplay').innerText = '';
+  document.getElementById('hintStatus').innerText = `Hints remaining: ${hintCount}`;
+
+  // Re-enable the hint button and input field
+  document.getElementById('getHintButton').disabled = false;
+  document.getElementById('puzzleNameInput').disabled = false;
+
+  // Reset story and UI elements
+  currentStoryIndex = 0;
+  document.getElementById('storyText').innerText = "You are a detective...";
+  document.getElementById('nextButton').style.display = 'block';
+  document.getElementById('skipButton').style.display = 'block';
+  document.getElementById('startRoomButton').style.display = 'none';
+
+  // Hide room and bad ending screens
+  document.getElementById('roomScreen').style.display = 'none';
+  document.getElementById('badEndingScreen').style.display = 'none';
+
+  // Show intro screen
+  document.getElementById('introScreen').style.display = 'block';
+
+  // Stop any ongoing timers
+  clearInterval(timerInterval);
+}
+
 function goToRoom() {
   document.getElementById('storyScreen').style.display = 'none';
   document.getElementById('roomScreen').style.display = 'block';
@@ -80,7 +117,7 @@ function submitPuzzle() {
       addItemToInventory(hiddenItem);  // Add hidden item to inventory
       document.getElementById('puzzleScreen').style.display = 'none';  // Hide puzzle after solving
   } else {
-      alert("Incorrect, try again.");
+      incorrectAnswer();
   }
 };
 
@@ -207,4 +244,46 @@ function closeHintPopup() {
       document.getElementById('hintMessage').innerText = 'Enter the name of the puzzle for which you need a hint:';  // Reset message
       document.getElementById('puzzleNameInput').disabled = false;  // Enable input again if hints remain
   }
+}
+
+
+let currentStoryIndex = 0;
+const storyLines = [
+    "You are a detective tasked with solving a 10-year-old unsolved case.",
+    "The victim was a wealthy businessman who disappeared mysteriously.",
+    "New evidence has surfaced, and it's up to you to solve the mystery."
+];
+
+function displayStory() {
+    const storyElement = document.getElementById('storyText');
+    if (currentStoryIndex < storyLines.length) {
+        storyElement.innerText = storyLines[currentStoryIndex];
+        currentStoryIndex++;
+    } else {
+        endStory();  // No more content, show the Start Room button
+    }
+}
+
+function endStory() {
+    // Hide the Next and Skip buttons, show the Start Room button
+    document.getElementById('nextButton').style.display = 'none';
+    document.getElementById('skipButton').style.display = 'none';
+    document.getElementById('startRoomButton').style.display = 'block';
+}
+
+function skipStory() {
+    // Immediately go to the room, bypassing the story
+    document.getElementById('storyScreen').style.display = 'none';
+    enterRoom();  // Start the game room
+}
+
+function startRoom() {
+    document.getElementById('storyScreen').style.display = 'none';
+    enterRoom();  // Start the game room
+}
+
+// Enter the room and start the timer
+function enterRoom() {
+    document.getElementById('roomScreen').style.display = 'block';
+    startTimer();  // Start the timer when the player enters the room
 }

@@ -11,7 +11,7 @@ let currentStoryIndex = 0;
 
 function displayStory() {
   const storyElement = document.getElementById('storyDisplay');
-  storyElement.innerText = storyLines[currentStoryIndex];
+  // storyElement.innerText = storyLines[currentStoryIndex];
 }
 
 function nextStory() {
@@ -23,7 +23,7 @@ function nextStory() {
   }
 }
 
-document.getElementById('nextStoryButton').addEventListener('click', nextStory);
+// document.getElementById('nextStoryButton').addEventListener('click', nextStory);
 
 // Initial story display
 displayStory();
