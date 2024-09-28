@@ -18,6 +18,15 @@
       <button id="nextStoryButton">Next</button>
       <button onclick="goToRoom()">Skip</button>
   </div>
+    <!-- Timer Display -->
+  <div id="timerDisplay">60:00</div>
+
+  <!-- Bad Ending Screen (Initially hidden) -->
+  <div id="badEndingScreen" style="display:none;">
+      <h2>Bad Ending</h2>
+      <p id="badEndingMessage"></p>
+      <button onclick="restartGame()">Restart</button> <!-- Optional restart functionality -->
+  </div>
 
   <div id="roomScreen" style="display:none;">
     <h2>Explore the Room</h2>
