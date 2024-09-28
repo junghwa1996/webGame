@@ -106,6 +106,7 @@ function getHint() {
 function disableGetHintButton() {
   const getHintButton = document.getElementById('getHintButton');
   getHintButton.disabled = true;
+  puzzleNameInput.disabled = true;
   document.getElementById('hintMessage').innerText = "You have used all your hints.";
 }
 
@@ -140,12 +141,14 @@ function closeHintPopup() {
   document.getElementById('hintPopup').style.display = 'none';
   document.getElementById('puzzleNameInput').value = '';  // Reset input field
 
-  // If all hints have been used, retain the "All hints used" message
+  // If all hints have been used, keep the input and message disabled
   if (hintCount === 0) {
       document.getElementById('hintTitle').innerText = 'All hints used';
       document.getElementById('hintMessage').innerText = 'You have used all your hints.';
+      document.getElementById('puzzleNameInput').disabled = true;  // Keep input disabled
   } else {
       document.getElementById('hintTitle').innerText = 'Request a Hint';  // Reset title
       document.getElementById('hintMessage').innerText = 'Enter the name of the puzzle for which you need a hint:';  // Reset message
+      document.getElementById('puzzleNameInput').disabled = false;  // Enable input again if hints remain
   }
 }
