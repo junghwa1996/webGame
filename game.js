@@ -102,6 +102,15 @@ function addHintToDropdown(puzzleName, hintText) {
 // Show the previously viewed hint when selected from dropdown
 document.getElementById('previousHintsDropdown').addEventListener('change', function() {
   const selectedHint = this.value;
-  const hintMessage = document.getElementById('hintMessage');
-  hintMessage.innerText = selectedHint;
+  const previousHintDisplay = document.getElementById('previousHintDisplay');
+
+  if (selectedHint) {
+      previousHintDisplay.innerText = `Previously viewed hint: ${selectedHint}`;
+  }
 });
+function closeHintPopup() {
+  document.getElementById('hintPopup').style.display = 'none';
+  document.getElementById('puzzleNameInput').value = '';  // Reset input field
+  document.getElementById('hintTitle').innerText = 'Request a Hint';  // Reset title
+  document.getElementById('hintMessage').innerText = 'Enter the name of the puzzle for which you need a hint:';  // Reset message
+}

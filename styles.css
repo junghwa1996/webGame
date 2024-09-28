@@ -171,3 +171,9 @@ button:hover {
 #previousHintsSection {
   margin-top: 20px;
 }
+
+#previousHintDisplay {
+  margin-top: 10px;
+  font-style: italic;
+  color: #666;
+}
