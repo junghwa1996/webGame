@@ -1,19 +1,17 @@
-// game.js
-
 function startGame() {
   document.getElementById('introScreen').style.display = 'none';
   document.getElementById('storyScreen').style.display = 'block';
-}
+};
 
 function goToRoom() {
   document.getElementById('storyScreen').style.display = 'none';
   document.getElementById('roomScreen').style.display = 'block';
-}
+};
 
 // Show puzzle when puzzle item is clicked
 function showPuzzle() {
   document.getElementById('puzzleScreen').style.display = 'block';
-}
+};
 
 // Submit puzzle answer and check correctness
 function submitPuzzle() {
@@ -28,37 +26,38 @@ function submitPuzzle() {
   } else {
       alert("Incorrect, try again.");
   }
-}
+};
 
 function toggleNote() {
   const noteSection = document.getElementById('noteSection');
   noteSection.style.display = (noteSection.style.display === 'none') ? 'block' : 'none';
-}
+};
 
 function toggleHint() {
   const hintSection = document.getElementById('hintSection');
   hintSection.style.display = (hintSection.style.display === 'none') ? 'block' : 'none';
-}
+};
 
 function toggleInventory() {
   const inventorySection = document.getElementById('inventorySection');
   inventorySection.style.display = (inventorySection.style.display === 'none') ? 'block' : 'none';
-}
+};
 
 // Show the hint popup when the hint icon is clicked
 function toggleHint() {
   document.getElementById('hintPopup').style.display = 'block';
-}
+};
 
 // Close the hint popup
 function closeHintPopup() {
   document.getElementById('hintPopup').style.display = 'none';
-}
+};
 
 // Hint logic based on puzzle name
 let viewedHints = [];
 
 function getHint() {
+  if (hintCount > 0) {
     const puzzleName = document.getElementById('puzzleNameInput').value.toLowerCase();
     const hintTitle = document.getElementById('hintTitle');
     const hintMessage = document.getElementById('hintMessage');
@@ -80,12 +79,21 @@ function getHint() {
 
     if (hintText !== "No hints available for this puzzle.") {
         addHintToDropdown(puzzleName, hintText);  // Store the hint
+        hintCount--;
+        updateHintStatus();  // Update hint status in the popup
     }
 
     // Update the popup with the hint
     hintTitle.innerText = `Hint for ${puzzleName}`;
     hintMessage.innerText = hintText;
-}
+
+    // Disable Get Hint button if no hints remain
+    if (hintCount === 0) {
+        document.getElementById('getHintButton').disabled = true;
+        hintMessage.innerText = "You have used all your hints.";
+    }
+  }
+};
 
 function addHintToDropdown(puzzleName, hintText) {
   if (!viewedHints.includes(puzzleName)) {
@@ -97,7 +105,12 @@ function addHintToDropdown(puzzleName, hintText) {
       option.innerText = `Hint for ${puzzleName}`;
       dropdown.appendChild(option);
   }
-}
+};
+
+function updateHintStatus() {
+  const hintStatus = document.getElementById('hintStatus');
+  hintStatus.innerText = `Hints remaining: ${hintCount}`;
+};
 
 // Show the previously viewed hint when selected from dropdown
 document.getElementById('previousHintsDropdown').addEventListener('change', function() {
@@ -108,9 +121,10 @@ document.getElementById('previousHintsDropdown').addEventListener('change', func
       previousHintDisplay.innerText = `Previously viewed hint: ${selectedHint}`;
   }
 });
+
 function closeHintPopup() {
   document.getElementById('hintPopup').style.display = 'none';
   document.getElementById('puzzleNameInput').value = '';  // Reset input field
   document.getElementById('hintTitle').innerText = 'Request a Hint';  // Reset title
   document.getElementById('hintMessage').innerText = 'Enter the name of the puzzle for which you need a hint:';  // Reset message
-}
+};
