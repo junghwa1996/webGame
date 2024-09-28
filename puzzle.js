@@ -1,13 +1,24 @@
 // puzzle.js
+const correctAnswers = ["hiddenclue", "secretcode"];
+let currentPuzzleIndex = 0;
+
 function checkPuzzleAnswer() {
-  let answer = document.getElementById('puzzleInput').value;
-  if (answer === "correctAnswer") {
-      alert("Correct! You solved the puzzle.");
-      // Trigger next step in the game
-  } else {
-      alert("Incorrect, try again.");
-  }
+    const userAnswer = document.getElementById('puzzleInput').value.toLowerCase();
+    if (userAnswer === correctAnswers[currentPuzzleIndex]) {
+        alert("Correct! You've solved the puzzle.");
+        nextPuzzle();
+    } else {
+        alert("Incorrect, try again.");
+    }
 }
 
-// Event listener for puzzle submission
+function nextPuzzle() {
+    currentPuzzleIndex++;
+    if (currentPuzzleIndex < correctAnswers.length) {
+        alert("Move on to the next puzzle.");
+    } else {
+        alert("You've completed all the puzzles!");
+    }
+}
+
 document.getElementById('submitPuzzleButton').addEventListener('click', checkPuzzleAnswer);
