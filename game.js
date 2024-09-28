@@ -56,24 +56,52 @@ function closeHintPopup() {
 }
 
 // Hint logic based on puzzle name
+let viewedHints = [];
+
 function getHint() {
-  const puzzleName = document.getElementById('puzzleNameInput').value.toLowerCase();
-  let hintMessage = "";
+    const puzzleName = document.getElementById('puzzleNameInput').value.toLowerCase();
+    const hintTitle = document.getElementById('hintTitle');
+    const hintMessage = document.getElementById('hintMessage');
+    let hintText = "";
 
-  switch(puzzleName) {
-      case "puzzle1":
-          hintMessage = "Puzzle 1 Hint: Try looking for the hidden code under the table.";
-          break;
-      case "puzzle2":
-          hintMessage = "Puzzle 2 Hint: The key is in the picture frame.";
-          break;
-      case "puzzle3":
-          hintMessage = "Puzzle 3 Hint: Combine the numbers in the book to find the combination.";
-          break;
-      default:
-          hintMessage = "No hints available for this puzzle.";
-  }
+    switch (puzzleName) {
+        case "puzzle1":
+            hintText = "Puzzle 1 Hint: Try looking for the hidden code under the table.";
+            break;
+        case "puzzle2":
+            hintText = "Puzzle 2 Hint: The key is in the picture frame.";
+            break;
+        case "puzzle3":
+            hintText = "Puzzle 3 Hint: Combine the numbers in the book to find the combination.";
+            break;
+        default:
+            hintText = "No hints available for this puzzle.";
+    }
 
-  alert(hintMessage);
-  closeHintPopup();  // Close the popup after displaying the hint
+    if (hintText !== "No hints available for this puzzle.") {
+        addHintToDropdown(puzzleName, hintText);  // Store the hint
+    }
+
+    // Update the popup with the hint
+    hintTitle.innerText = `Hint for ${puzzleName}`;
+    hintMessage.innerText = hintText;
 }
+
+function addHintToDropdown(puzzleName, hintText) {
+  if (!viewedHints.includes(puzzleName)) {
+      viewedHints.push(puzzleName);
+
+      const dropdown = document.getElementById('previousHintsDropdown');
+      const option = document.createElement('option');
+      option.value = hintText;
+      option.innerText = `Hint for ${puzzleName}`;
+      dropdown.appendChild(option);
+  }
+}
+
+// Show the previously viewed hint when selected from dropdown
+document.getElementById('previousHintsDropdown').addEventListener('change', function() {
+  const selectedHint = this.value;
+  const hintMessage = document.getElementById('hintMessage');
+  hintMessage.innerText = selectedHint;
+});

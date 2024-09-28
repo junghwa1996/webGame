@@ -54,11 +54,18 @@
 
     <div id="hintPopup" class="popup" style="display:none;">
       <div class="popupContent">
-          <h2>Request a Hint</h2>
-          <p>Enter the name of the puzzle for which you need a hint:</p>
+          <h2 id="hintTitle">Request a Hint</h2>
+          <p id="hintMessage">Enter the name of the puzzle for which you need a hint:</p>
           <input id="puzzleNameInput" type="text" placeholder="Puzzle name">
           <button onclick="getHint()">Get Hint</button>
           <button onclick="closeHintPopup()">Close</button>
+  
+          <div id="previousHintsSection">
+              <h3>Previously Viewed Hints</h3>
+              <select id="previousHintsDropdown">
+                  <option value="">Select a hint</option>
+              </select>
+          </div>
       </div>
     </div>
 
