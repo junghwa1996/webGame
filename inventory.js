@@ -26,7 +26,19 @@ function displayInventory() {
 
 function showItemDetails(index) {
   const item = inventory[index];
-  alert(`${item.item} - ${item.description}`);
+
+  // Update the popup with item details
+  document.getElementById('itemPopupTitle').innerText = item.item;
+  document.getElementById('itemPopupImage').src = item.image;
+  document.getElementById('itemPopupDescription').innerText = item.description;
+
+  // Show the item popup
+  document.getElementById('itemPopup').style.display = 'block';
+}
+
+function closeItemPopup() {
+  // Close the item popup
+  document.getElementById('itemPopup').style.display = 'none';
 }
 
 // Initialize inventory display

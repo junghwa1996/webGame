@@ -50,6 +50,12 @@
         <button id="submitPuzzleButton" onclick="submitPuzzle()">Submit Answer</button>
     </div>
 
+    <div id="noteSection" style="display:none;">
+      <h2>Notes</h2>
+      <button onclick="createNote()">Create Note</button>
+      <div id="noteContainer"></div>
+    </div>
+
     <div id="iconBar">
       <img src="images/note_icon.png" id="noteIcon" onclick="toggleNote()" alt="Note Icon">
       <img src="images/hint_icon.png" id="hintIcon" onclick="toggleHint()" alt="Hint Icon">
@@ -85,10 +91,14 @@
       </div>
     </div>
 
-    <div id="noteSection" style="display:none;">
-      <h2>Notes</h2>
-      <button onclick="createNote()">Create Note</button>
-      <div id="noteContainer"></div>
+    <!-- Item Popup (Initially hidden) -->
+    <div id="itemPopup" class="popup" style="display:none;">
+      <div class="popupContent">
+          <h2 id="itemPopupTitle">Item Name</h2>
+          <img id="itemPopupImage" src="" alt="Item Image" style="max-width:100%;">
+          <p id="itemPopupDescription">Item description here...</p>
+          <button onclick="closeItemPopup()">Close</button>
+      </div>
     </div>
   </div>
 

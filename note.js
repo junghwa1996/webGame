@@ -81,7 +81,7 @@ function elementDrag(event) {
     if (!dragItem) return;
 
     dragItem.style.left = (event.clientX - offsetX) + 'px';
-    dragItem.style.top = (event.clientY - offsetY) - 185 + 'px';
+    dragItem.style.top = (event.clientY - offsetY) - 235 + 'px';
 }
 
 function stopDrag() {
