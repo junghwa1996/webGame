@@ -7,48 +7,45 @@
     <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 연결 -->
 </head>
 <body>
-    <div id="gameContainer">
-        <header>
-            <h1>Escape Room Game</h1>
-            <div id="timerDisplay">60:00</div>
-        </header>
+  <div id="introScreen">
+    <h1>Escape Room</h1>
+    <button id="startButton" onclick="startGame()">Start</button>
+  </div>
 
-            <!-- Story Section -->
-        <section id="storySection">
-            <h2>Story</h2>
-            <div id="storyDisplay"></div>
-            <button id="nextStoryButton">Next</button>
-        </section>
+  <div id="storyScreen" style="display:none;">
+      <h2>Story</h2>
+      <div id="storyDisplay"></div>
+      <button id="nextStoryButton">Next</button>
+      <button onclick="goToRoom()">Skip</button>
+  </div>
 
-        <!-- Puzzle Section -->
-        <section id="puzzleSection">
-            <h2>Puzzle</h2>
-            <p>Enter the solution to the puzzle:</p>
-            <input id="puzzleInput" type="text" placeholder="Enter answer">
-            <button id="submitPuzzleButton">Submit Answer</button>
-        </section>
+  <div id="roomScreen" style="display:none;">
+    <section id="puzzleSection">
+      <h2>Puzzle</h2>
+      <p>Enter the solution to the puzzle:</p>
+      <input id="puzzleInput" type="text" placeholder="Enter answer">
+      <button id="submitPuzzleButton">Submit Answer</button>
+  </section>
 
-        <section id="inventorySection">
-            <h2>Inventory</h2>
-            <div id="inventoryDisplay"></div>
-        </section>
 
-        <section id="hintSection">
-            <button id="hintButton">Use Hint</button>
-        </section>
+  <section id="hintSection">
+    <button id="hintButton">Use Hint</button>
+  </section>
 
-        <section id="noteSection">
-            <h2>Notes</h2>
-            <button id="addNoteButton">Add Note</button>
-            <div id="noteDisplay"></div>
-        </section>
+  <section id="noteSection">
+      <h2>Notes</h2>
+      <button id="addNoteButton">Add Note</button>
+      <div id="noteDisplay"></div>
+  </section>
 
-        <section id="roomSection">
-          <h2>Explore the Room</h2>
-          <div class="roomObject" id="clueObject" onclick="findClue()">Click here to find a clue</div>
-          <div class="roomObject" id="keyObject" onclick="findKey()">Click here to find a key</div>
-        </section>
-    </div>
+  <h2>Explore the Room</h2>
+  <div class="roomObject" id="clueObject" onclick="findClue()">item</div>
+  <div class="roomObject" id="keyObject" onclick="findKey()">item</div>
+  <div id="inventorySection">
+      <h2>Inventory</h2>
+      <div id="inventoryDisplay"></div>
+  </div>
+  </div>
 
     <script src="hintSystem.js"></script>
     <script src="timer.js"></script>
@@ -57,5 +54,6 @@
     <script src="puzzle.js"></script>
     <script src="story.js"></script>
     <script src="objectInteract.js"></script>
+    <script src="game.js"></script>
 </body>
 </html>
