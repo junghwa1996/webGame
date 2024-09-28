@@ -61,7 +61,7 @@ function startGame() {
 
 function restartGame() {
   // Reset game variables
-  hintCount = 3;
+  // hintCount = 3;
   obtainedHints = [];
   inventory = [];
   notes = [];
@@ -129,153 +129,13 @@ function toggleNote() {
 function toggleHint() {
   const hintSection = document.getElementById('hintSection');
   hintSection.style.display = (hintSection.style.display === 'none') ? 'block' : 'none';
+
 };
 
 function toggleInventory() {
   const inventorySection = document.getElementById('inventorySection');
   inventorySection.style.display = (inventorySection.style.display === 'none') ? 'block' : 'none';
 };
-
-// Show the hint popup when the hint icon is clicked
-function toggleHint() {
-  document.getElementById('hintPopup').style.display = 'block';
-};
-
-// Close the hint popup
-function closeHintPopup() {
-  document.getElementById('hintPopup').style.display = 'none';
-};
-
-// Hint logic based on puzzle name
-let viewedHints = [];
-let obtainedHints = []; 
-
-function getHint() {
-  const puzzleName = document.getElementById('puzzleNameInput').value.toLowerCase();
-  const hintTitle = document.getElementById('hintTitle');
-  const hintMessage = document.getElementById('hintMessage');
-  let hintText = "";
-
-  // Check if the hint was already obtained
-  if (obtainedHints.includes(puzzleName)) {
-      hintTitle.innerText = `Hint for ${puzzleName}`;
-      hintMessage.innerText = "You have already obtained this hint.";
-      return;  // Do not count this hint again
-  }
-
-  if (hintCount > 0) {
-      switch (puzzleName) {
-          case "puzzle1":
-              hintText = "Puzzle 1 Hint: Try looking for the hidden code under the table.";
-              break;
-          case "puzzle2":
-              hintText = "Puzzle 2 Hint: The key is in the picture frame.";
-              break;
-          case "puzzle3":
-              hintText = "Puzzle 3 Hint: Combine the numbers in the book to find the combination.";
-              break;
-          default:
-              hintText = "No hints available for this puzzle.";
-      }
-
-      if (hintText !== "No hints available for this puzzle.") {
-          obtainedHints.push(puzzleName);  // Add to obtained hints
-          addHintToDropdown(puzzleName, hintText);  // Store the hint
-          hintCount--;
-          updateHintStatus();  // Update hint status in the popup
-      }
-
-      // Update the popup with the hint
-      hintTitle.innerText = `Hint for ${puzzleName}`;
-      hintMessage.innerText = hintText;
-
-      // Disable Get Hint button if no hints remain
-      if (hintCount === 0) {
-          disableGetHintButton();
-      }
-  }
-}
-
-function disableGetHintButton() {
-  const getHintButton = document.getElementById('getHintButton');
-  getHintButton.disabled = true;
-  puzzleNameInput.disabled = true;
-  document.getElementById('hintMessage').innerText = "You have used all your hints.";
-}
-
-function addHintToDropdown(puzzleName, hintText) {
-  if (!viewedHints.includes(puzzleName)) {
-      viewedHints.push(puzzleName);
-
-      const dropdown = document.getElementById('previousHintsDropdown');
-      const option = document.createElement('option');
-      option.value = hintText;
-      option.innerText = `Hint for ${puzzleName}`;
-      dropdown.appendChild(option);
-  }
-};
-
-function updateHintStatus() {
-  const hintStatus = document.getElementById('hintStatus');
-  hintStatus.innerText = `Hints remaining: ${hintCount}`;
-}
-
-// Show the previously viewed hint when selected from dropdown
-document.getElementById('previousHintsDropdown').addEventListener('change', function() {
-  const selectedHint = this.value;
-  const previousHintDisplay = document.getElementById('previousHintDisplay');
-
-  if (selectedHint) {
-      previousHintDisplay.innerText = `Previously viewed hint: ${selectedHint}`;
-  }
-});
-
-function closeHintPopup() {
-  document.getElementById('hintPopup').style.display = 'none';
-  document.getElementById('puzzleNameInput').value = '';  // Reset input field
-
-  // If all hints have been used, keep the input and message disabled
-  if (hintCount === 0) {
-      document.getElementById('hintTitle').innerText = 'All hints used';
-      document.getElementById('hintMessage').innerText = 'You have used all your hints.';
-      document.getElementById('puzzleNameInput').disabled = true;  // Keep input disabled
-  } else {
-      document.getElementById('hintTitle').innerText = 'Request a Hint';  // Reset title
-      document.getElementById('hintMessage').innerText = 'Enter the name of the puzzle for which you need a hint:';  // Reset message
-      document.getElementById('puzzleNameInput').disabled = false;  // Enable input again if hints remain
-  }
-}
-
-
-let currentStoryIndex = 0;
-const storyLines = [
-    "You are a detective tasked with solving a 10-year-old unsolved case.",
-    "The victim was a wealthy businessman who disappeared mysteriously.",
-    "New evidence has surfaced, and it's up to you to solve the mystery."
-];
-
-function displayStory() {
-    const storyElement = document.getElementById('storyText');
-    if (currentStoryIndex < storyLines.length) {
-        storyElement.innerText = storyLines[currentStoryIndex];
-        currentStoryIndex++;
-    } else {
-        endStory();  // No more content, show the Start Room button
-    }
-}
-
-function endStory() {
-    // Hide the Next and Skip buttons, show the Start Room button
-    document.getElementById('nextButton').style.display = 'none';
-    document.getElementById('skipButton').style.display = 'none';
-    document.getElementById('startRoomButton').style.display = 'block';
-}
-
-function skipStory() {
-    // Immediately go to the room, bypassing the story
-    document.getElementById('storyScreen').style.display = 'none';
-    enterRoom();  // Start the game room
-}
 
 function startRoom() {
     document.getElementById('storyScreen').style.display = 'none';

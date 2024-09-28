@@ -32,13 +32,15 @@ function showItemDetails(index) {
   document.getElementById('itemPopupImage').src = item.image;
   document.getElementById('itemPopupDescription').innerText = item.description;
 
-  // Show the item popup
+  // Show the item popup and darken the background
   document.getElementById('itemPopup').style.display = 'block';
+  document.getElementById('popupOverlay').style.display = 'block';
 }
 
 function closeItemPopup() {
-  // Close the item popup
+  // Close the item popup and restore background
   document.getElementById('itemPopup').style.display = 'none';
+  document.getElementById('popupOverlay').style.display = 'none';
 }
 
 // Initialize inventory display

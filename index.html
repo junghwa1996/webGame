@@ -58,7 +58,7 @@
 
     <div id="iconBar">
       <img src="images/note_icon.png" id="noteIcon" onclick="toggleNote()" alt="Note Icon">
-      <img src="images/hint_icon.png" id="hintIcon" onclick="toggleHint()" alt="Hint Icon">
+      <img src="images/hint_icon.png" id="hintIcon" onclick="showHintPopup()" alt="Hint Icon">
       <img src="images/inventory_icon.png" id="inventoryIcon" onclick="toggleInventory()" alt="Inventory Icon">
     </div>
 
@@ -68,6 +68,7 @@
       <button onclick="useHint()">Use Hint</button>
     </div>
 
+    <div id="popupOverlay" class="overlay" style="display:none;"></div>
     <!-- Hint Popup -->
     <div id="hintPopup" class="popup" style="display:none;">
       <div class="popupContent">
@@ -95,14 +96,15 @@
     <div id="itemPopup" class="popup" style="display:none;">
       <div class="popupContent">
           <h2 id="itemPopupTitle">Item Name</h2>
-          <img id="itemPopupImage" src="" alt="Item Image" style="max-width:100%;">
+          <img id="itemPopupImage" src="" alt="Item Image">
           <p id="itemPopupDescription">Item description here...</p>
           <button onclick="closeItemPopup()">Close</button>
       </div>
-    </div>
+  </div>
   </div>
 
   <script src="hintSystem.js"></script>
+  <script src="story.js"></script>
   <script src="inventory.js"></script>
   <script src="notepad.js"></script>
   <script src="objectInteract.js"></script>
