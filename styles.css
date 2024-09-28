@@ -87,3 +87,11 @@ button:hover {
   object-fit: contain;
   margin-bottom: 5px;
 }
+
+#puzzleScreen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
