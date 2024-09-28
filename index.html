@@ -3,19 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape Room Prototype</title>
+    <title>Escape Room Game</title>
+    <link rel="stylesheet" href="styles.css"> <!-- CSS 파일 연결 -->
 </head>
 <body>
     <div id="gameContainer">
-        <div id="timerDisplay">60:00</div>
-        <button id="hintButton">Use Hint</button>
+        <header>
+            <h1>Escape Room Game</h1>
+            <div id="timerDisplay">60:00</div>
+        </header>
 
-        <div id="inventoryDisplay"></div>
-        <div id="noteDisplay"></div>
-        <button id="addNoteButton">Add Note</button>
+        <section id="inventorySection">
+            <h2>Inventory</h2>
+            <div id="inventoryDisplay"></div>
+        </section>
 
-        <input id="puzzleInput" type="text" placeholder="Enter answer">
-        <button id="submitPuzzleButton">Submit Answer</button>
+        <section id="puzzleSection">
+            <h2>Solve the Puzzle</h2>
+            <input id="puzzleInput" type="text" placeholder="Enter answer">
+            <button id="submitPuzzleButton">Submit Answer</button>
+        </section>
+
+        <section id="hintSection">
+            <button id="hintButton">Use Hint</button>
+        </section>
+
+        <section id="noteSection">
+            <h2>Notes</h2>
+            <button id="addNoteButton">Add Note</button>
+            <div id="noteDisplay"></div>
+        </section>
     </div>
 
     <script src="hintSystem.js"></script>
