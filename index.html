@@ -52,6 +52,16 @@
       <button onclick="useHint()">Use Hint</button>
     </div>
 
+    <div id="hintPopup" class="popup" style="display:none;">
+      <div class="popupContent">
+          <h2>Request a Hint</h2>
+          <p>Enter the name of the puzzle for which you need a hint:</p>
+          <input id="puzzleNameInput" type="text" placeholder="Puzzle name">
+          <button onclick="getHint()">Get Hint</button>
+          <button onclick="closeHintPopup()">Close</button>
+      </div>
+    </div>
+
     <div id="noteSection" style="display:none;">
       <h2>Notes</h2>
       <button onclick="createNote()">Create Note</button>

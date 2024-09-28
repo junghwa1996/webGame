@@ -44,3 +44,36 @@ function toggleInventory() {
   const inventorySection = document.getElementById('inventorySection');
   inventorySection.style.display = (inventorySection.style.display === 'none') ? 'block' : 'none';
 }
+
+// Show the hint popup when the hint icon is clicked
+function toggleHint() {
+  document.getElementById('hintPopup').style.display = 'block';
+}
+
+// Close the hint popup
+function closeHintPopup() {
+  document.getElementById('hintPopup').style.display = 'none';
+}
+
+// Hint logic based on puzzle name
+function getHint() {
+  const puzzleName = document.getElementById('puzzleNameInput').value.toLowerCase();
+  let hintMessage = "";
+
+  switch(puzzleName) {
+      case "puzzle1":
+          hintMessage = "Puzzle 1 Hint: Try looking for the hidden code under the table.";
+          break;
+      case "puzzle2":
+          hintMessage = "Puzzle 2 Hint: The key is in the picture frame.";
+          break;
+      case "puzzle3":
+          hintMessage = "Puzzle 3 Hint: Combine the numbers in the book to find the combination.";
+          break;
+      default:
+          hintMessage = "No hints available for this puzzle.";
+  }
+
+  alert(hintMessage);
+  closeHintPopup();  // Close the popup after displaying the hint
+}
