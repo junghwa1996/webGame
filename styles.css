@@ -74,6 +74,7 @@ button {
 button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+  pointer-events: none;  /* Prevent hovering and clicking */
 }
 
 button:hover {
