@@ -10,6 +10,3 @@ function useHint() {
         alert("No more hints available!");
     }
 }
-
-// Event listener for the hint button
-document.getElementById('hintButton').addEventListener('click', useHint);

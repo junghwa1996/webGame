@@ -18,6 +18,3 @@ function displayNotes() {
         noteDisplay.appendChild(noteElement);
     });
 }
-
-// Event listener for adding a new note
-document.getElementById('addNoteButton').addEventListener('click', addNote);
