@@ -12,8 +12,17 @@ function findKey() {
 }
 
 function addItemToInventory(item) {
-  inventory.push(item);
-  displayInventory(); // Refresh inventory display
+  const isDuplicate = inventory.some(invItem => invItem.item === item.item);
+
+  if (!isDuplicate) {
+      inventory.push(item);
+      displayInventory();  // Update inventory display
+
+      // Hide the item in the room after acquisition
+      document.getElementById(`${item.type}Object`).style.display = 'none';
+  } else {
+      alert(`${item.item} is already in your inventory.`);
+  }
 }
 
 function showAcquisitionPopup(itemName, itemImage) {
