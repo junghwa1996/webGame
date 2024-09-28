@@ -100,7 +100,16 @@
           <p id="itemPopupDescription">Item description here...</p>
           <button onclick="closeItemPopup()">Close</button>
       </div>
-  </div>
+    </div>
+
+    <!-- Acquisition Popup (Initially hidden) -->
+    <div id="acquisitionPopup" class="popup" style="display:none;">
+      <div class="popupContent">
+          <h2 id="acquisitionPopupTitle">Item Acquired</h2>
+          <img id="acquisitionPopupImage" src="" alt="Item Image" style="max-width:100%;">
+          <button onclick="closeAcquisitionPopup()">Close</button>
+      </div>
+    </div>
   </div>
 
   <script src="hintSystem.js"></script>

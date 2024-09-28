@@ -186,6 +186,12 @@ button:hover {
   gap: 15px;
 }
 
+.popupContent img {
+  margin-top: 10px;
+  max-width: 80%;
+  height: auto;
+}
+
 .popupContent input, .popupContent button {
   padding: 10px;
   font-size: 16px;
