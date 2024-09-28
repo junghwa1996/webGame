@@ -118,7 +118,7 @@ button:hover {
 .note {
   width: 150px;
   background-color: yellow;
-  padding: 10px;
+  padding: 30px 10px 10px;
   border: 1px solid #ccc;
   position: absolute;
   cursor: move;
@@ -134,7 +134,7 @@ button:hover {
 }
 
 .noteContent {
-  background-color: white;
+  /* background-color: white; */
   padding: 5px;
 }
 
