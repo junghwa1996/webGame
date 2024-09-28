@@ -1,7 +1,4 @@
-let inventory = [
-  { item: "Key", type: "key", description: "This key opens the back door.", image: "images/key.png" },
-  { item: "Clue", type: "clue", description: "A cryptic note saying: 'The answer lies within the code 42.'", image: "images/clue.png" }
-];
+let inventory = [];
 
 function displayInventory() {
   let inventoryDisplay = document.getElementById('inventoryDisplay');
