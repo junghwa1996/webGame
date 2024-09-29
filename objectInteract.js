@@ -23,10 +23,11 @@ function findKey() {
 
 function interactWithDoor() {
   const hasKey = inventory.some(item => item.type === 'key');
-  
+
   if (hasKey) {
-      // Show success popup if key is present in the inventory
-      showAcquisitionPopup('Door', 'images/door.png', 'The door is unlocked!');
+      // Show success popup and transition to Good Ending
+      showAcquisitionPopup('Door', 'images/door.png', 'The door is unlocked! You escaped successfully.');
+      setTimeout(showGoodEnding, 3000);  // Transition to good ending after a short delay
   } else {
       // Show failure popup if key is missing
       showAcquisitionPopup('Door', 'images/door.png', 'Key not found!');

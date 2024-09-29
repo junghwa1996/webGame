@@ -37,6 +37,12 @@ function showBadEnding() {
   document.getElementById('badEndingMessage').innerText = "Time's up! You couldn't solve the mystery.";
 }
 
+function showGoodEnding() {
+  // Hide the room and show the Good Ending screen
+  document.getElementById('roomScreen').style.display = 'none';
+  document.getElementById('goodEndingScreen').style.display = 'block';
+}
+
 // Call this function when entering the room
 function enterRoom() {
   document.getElementById('roomScreen').style.display = 'block';
@@ -88,6 +94,7 @@ function restartGame() {
   // Hide room and bad ending screens
   document.getElementById('roomScreen').style.display = 'none';
   document.getElementById('badEndingScreen').style.display = 'none';
+  document.getElementById('goodEndingScreen').style.display = 'none';
 
   // Show intro screen
   document.getElementById('introScreen').style.display = 'block';
