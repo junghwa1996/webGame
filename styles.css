@@ -202,6 +202,12 @@ button:hover {
   font-size: 14px;
 }
 
+.roomObject {
+  margin: 10px;
+  cursor: pointer;
+  display: inline-block;
+}
+
 #previousHintsSection {
   margin-top: 20px;
 }

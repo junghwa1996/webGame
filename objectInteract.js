@@ -11,6 +11,24 @@ function findKey() {
   showAcquisitionPopup(key.item, key.image);  // Show popup for item acquisition
 }
 
+function findDoor() {
+  const door = { item: "Door", type: "door", description: "The main exit door, it's locked.", image: "images/door.png" };
+  showAcquisitionPopup(door.item, door.image);  // Show popup for door
+  // alert("The door is locked. Find the key to open it.");  // Interaction logic for the door
+}
+
+function findLock() {
+  const lock = { item: "Lock", type: "lock", description: "A sturdy lock. It requires a specific key to open.", image: "images/lock.png" };
+  addItemToInventory(lock);
+  showAcquisitionPopup(lock.item, lock.image);  // Show popup for lock
+}
+
+function findSecondKey() {
+  const secondKey = { item: "Second Key", type: "key", description: "A key that might open the door or the lock.", image: "images/secondKey.png" };
+  addItemToInventory(secondKey);
+  showAcquisitionPopup(secondKey.item, secondKey.image);  // Show popup for second key
+}
+
 function addItemToInventory(item) {
   const isDuplicate = inventory.some(invItem => invItem.item === item.item);
 
