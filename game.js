@@ -67,10 +67,8 @@ function startGame() {
 
 function restartGame() {
   // Reset game variables
-  // hintCount = 3;
   obtainedHints = [];
   inventory = [];
-  notes = [];
   timeLimit = 60 * 60;  // Reset the timer to 60 minutes
 
   // Clear any displayed hints, notes, and inventory
@@ -84,23 +82,37 @@ function restartGame() {
   document.getElementById('getHintButton').disabled = false;
   document.getElementById('puzzleNameInput').disabled = false;
 
-  // Reset story and UI elements
+  // Reset objects (re-show hidden objects)
+  const doorObject = document.getElementById('doorObject');
+  const lockObject = document.getElementById('lockObject');
+  const keyObject = document.getElementById('keyObject');
+  const lockKeyObject = document.getElementById('lockKeyObject');
+
+  if (doorObject) doorObject.style.display = 'inline-block';
+  if (lockObject) lockObject.style.display = 'inline-block';
+  if (keyObject) keyObject.style.display = 'inline-block';
+  if (lockKeyObject) lockKeyObject.style.display = 'inline-block';
+
+  // Hide the Good and Bad Ending screens
+  document.getElementById('goodEndingScreen').style.display = 'none';
+  document.getElementById('badEndingScreen').style.display = 'none';
+
+  // Show intro screen and reset the story
   currentStoryIndex = 0;
   document.getElementById('storyText').innerText = "You are a detective...";
-  document.getElementById('nextButton').style.display = 'block';
-  document.getElementById('skipButton').style.display = 'block';
+  document.getElementById('nextButton').style.display = 'inline-block';
+  document.getElementById('skipButton').style.display = 'inline-block';
   document.getElementById('startRoomButton').style.display = 'none';
 
-  // Hide room and bad ending screens
+  // Hide the room screen and stop the timer
   document.getElementById('roomScreen').style.display = 'none';
-  document.getElementById('badEndingScreen').style.display = 'none';
-  document.getElementById('goodEndingScreen').style.display = 'none';
+  clearInterval(timerInterval);  // Stop the timer
 
-  // Show intro screen
-  document.getElementById('introScreen').style.display = 'block';
+  // Reset timer display
+  document.getElementById('timerDisplay').innerText = "60:00";
 
-  // Stop any ongoing timers
-  clearInterval(timerInterval);
+  // Show intro screen again
+  document.getElementById('introScreen').style.display = 'flex';
 }
 
 function goToRoom() {
