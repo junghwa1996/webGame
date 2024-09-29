@@ -34,8 +34,12 @@
     <div class="roomObject" id="clueObject" onclick="findClue()">Click here to find a clue</div>
     <div class="roomObject" id="keyObject" onclick="findKey()">Click here to find a key</div>
     <!-- Door, Lock, and Second Key objects in the room -->
-    <div class="roomObject" id="doorObject" onclick="findDoor()">Click here to interact with the door</div>
-    <div class="roomObject" id="lockObject" onclick="findLock()">Click here to find a lock</div>
+    <!-- <div class="roomObject" id="doorObject" onclick="findDoor()">Click here to interact with the door</div>
+    <div class="roomObject" id="lockObject" onclick="findLock()">Click here to find a lock</div> -->
+    <!-- Door and Lock objects in the room -->
+    <div class="roomObject" id="doorObject" onclick="interactWithDoor()">Click here to interact with the door</div>
+    <div class="roomObject" id="lockObject" onclick="interactWithLock()">Click here to interact with the lock</div>
+    
     <div class="roomObject" id="lockKeyObject" onclick="findSecondKey()">Click here to find a second key</div>
     
     <!-- Puzzle object -->
@@ -109,11 +113,12 @@
     <!-- Acquisition Popup (Initially hidden) -->
     <div id="acquisitionPopup" class="popup" style="display:none;">
       <div class="popupContent">
-          <h2 id="acquisitionPopupTitle">Item Acquired</h2>
+          <h2 id="acquisitionPopupTitle">Item Name</h2>
           <img id="acquisitionPopupImage" src="" alt="Item Image" style="max-width:100%;">
+          <p id="acquisitionPopupDescription">Item description here...</p>
           <button onclick="closeAcquisitionPopup()">Close</button>
       </div>
-    </div>
+  </div>
   </div>
 
   <script src="hintSystem.js"></script>
